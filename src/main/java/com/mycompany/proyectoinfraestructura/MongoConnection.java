@@ -15,19 +15,22 @@ public class MongoConnection {
 
     // Constructor privado - Singleton
     private MongoConnection() {
-        ConnectionString connString = new ConnectionString(URI);
-
-        MongoClientSettings settings = MongoClientSettings.builder()
-                .applyConnectionString(connString)
-                .applyToConnectionPoolSettings(builder ->
-                        builder.maxSize(10)          // máx conexiones simultáneas
-                               .minSize(2))           // mín conexiones en pool
-                .applyToSocketSettings(builder ->
-                        builder.connectTimeout(5, java.util.concurrent.TimeUnit.SECONDS)
-                               .readTimeout(10, java.util.concurrent.TimeUnit.SECONDS))
-                .build();
+        MongoClientSettings settings = MongoConfig.buildSettings(URI);
+        //codigo pasado
+//        ConnectionString connString = new ConnectionString(URI);
+//
+//        MongoClientSettings settings = MongoClientSettings.builder()
+//                .applyConnectionString(connString)
+//                .applyToConnectionPoolSettings(builder ->
+//                        builder.maxSize(10)          // máx conexiones simultáneas
+//                               .minSize(2))           // mín conexiones en pool
+//                .applyToSocketSettings(builder ->
+//                        builder.connectTimeout(5, java.util.concurrent.TimeUnit.SECONDS)
+//                               .readTimeout(10, java.util.concurrent.TimeUnit.SECONDS))
+//                .build();
 
         this.client = MongoClients.create(settings);
+    
     }
 
     // Obtener instancia única
