@@ -6,7 +6,7 @@ package com.mycompany.proyectoinfraestructura;
 
 /**
  *
- * @author HP
+ * @author Equipo 1
  */
 public class ProyectoInfraestructura {
 
